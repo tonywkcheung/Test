@@ -27,15 +27,11 @@ public class SudokuTest {
 
         System.out.println(sudoku.toString());
 
-        assertEquals("[0, 1, 4, 5, 8]", sudoku.getLine("row0").empty()
-                .toString());
-        assertEquals("[1, 2, 4, 5, 8]", sudoku.getLine("row0").unassigned()
-                .toString());
+        assertEquals("[0, 1, 4, 5, 8]", sudoku.getLine("row0").empty().toString());
+        assertEquals("[1, 2, 4, 5, 8]", sudoku.getLine("row0").unassigned().toString());
 
-        assertEquals("[0, 1, 3, 5, 7]", sudoku.getLine("grid0").empty()
-                .toString());
-        assertEquals("[1, 2, 5, 8, 9]", sudoku.getLine("grid0").unassigned()
-                .toString());
+        assertEquals("[0, 1, 3, 5, 7]", sudoku.getLine("grid0").empty().toString());
+        assertEquals("[1, 2, 5, 8, 9]", sudoku.getLine("grid0").unassigned().toString());
 
         sudoku.solve(0, 0);
 

@@ -76,8 +76,7 @@ public class HashTable<K, V> {
 
         int hashIndex = key.hashCode() % ARRAY_SIZE;
 
-        for (Entry<K, V> hashEntry = table[hashIndex]; hashEntry != null; hashEntry = hashEntry
-                .next()) {
+        for (Entry<K, V> hashEntry = table[hashIndex]; hashEntry != null; hashEntry = hashEntry.next()) {
             if (hashEntry.getKey().equals(key)) {
                 return hashEntry.getValue();
             }
@@ -90,8 +89,7 @@ public class HashTable<K, V> {
         List<V> valueList = new ArrayList<V>();
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (table[i] != null) {
-                for (Entry<K, V> hashEntry = table[i]; hashEntry != null; hashEntry = hashEntry
-                        .next()) {
+                for (Entry<K, V> hashEntry = table[i]; hashEntry != null; hashEntry = hashEntry.next()) {
                     valueList.add(hashEntry.getValue());
                 }
             }
@@ -104,8 +102,7 @@ public class HashTable<K, V> {
         List<K> keyList = new ArrayList<K>();
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (table[i] != null) {
-                for (Entry<K, V> hashEntry = table[i]; hashEntry != null; hashEntry = hashEntry
-                        .next()) {
+                for (Entry<K, V> hashEntry = table[i]; hashEntry != null; hashEntry = hashEntry.next()) {
                     keyList.add(hashEntry.getKey());
                 }
             }

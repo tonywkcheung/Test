@@ -25,20 +25,13 @@ public class Sudoku {
 
         lines.add(new GameLine("row0", board, 0, 1, 2, 3, 4, 5, 6, 7, 8));
         lines.add(new GameLine("row1", board, 9, 10, 11, 12, 13, 14, 15, 16, 17));
-        lines.add(new GameLine("row2", board, 18, 19, 20, 21, 22, 23, 24, 25,
-                26));
-        lines.add(new GameLine("row3", board, 27, 28, 29, 30, 31, 32, 33, 34,
-                35));
-        lines.add(new GameLine("row4", board, 36, 37, 38, 39, 40, 41, 42, 43,
-                44));
-        lines.add(new GameLine("row5", board, 45, 46, 47, 48, 49, 50, 51, 52,
-                53));
-        lines.add(new GameLine("row6", board, 54, 55, 56, 57, 58, 59, 60, 61,
-                62));
-        lines.add(new GameLine("row7", board, 63, 64, 65, 66, 67, 68, 69, 70,
-                71));
-        lines.add(new GameLine("row8", board, 72, 73, 74, 75, 76, 77, 78, 79,
-                80));
+        lines.add(new GameLine("row2", board, 18, 19, 20, 21, 22, 23, 24, 25, 26));
+        lines.add(new GameLine("row3", board, 27, 28, 29, 30, 31, 32, 33, 34, 35));
+        lines.add(new GameLine("row4", board, 36, 37, 38, 39, 40, 41, 42, 43, 44));
+        lines.add(new GameLine("row5", board, 45, 46, 47, 48, 49, 50, 51, 52, 53));
+        lines.add(new GameLine("row6", board, 54, 55, 56, 57, 58, 59, 60, 61, 62));
+        lines.add(new GameLine("row7", board, 63, 64, 65, 66, 67, 68, 69, 70, 71));
+        lines.add(new GameLine("row8", board, 72, 73, 74, 75, 76, 77, 78, 79, 80));
 
         lines.add(new GameLine("col0", board, 0, 9, 18, 27, 36, 45, 54, 63, 72));
         lines.add(new GameLine("col1", board, 1, 10, 19, 28, 37, 46, 55, 64, 73));
@@ -53,18 +46,12 @@ public class Sudoku {
         lines.add(new GameLine("grid0", board, 0, 1, 2, 9, 10, 11, 18, 19, 20));
         lines.add(new GameLine("grid1", board, 3, 4, 5, 12, 13, 14, 21, 22, 23));
         lines.add(new GameLine("grid2", board, 6, 7, 8, 15, 16, 17, 24, 25, 26));
-        lines.add(new GameLine("grid3", board, 27, 28, 29, 36, 37, 38, 45, 46,
-                47));
-        lines.add(new GameLine("grid4", board, 30, 31, 32, 39, 40, 41, 48, 49,
-                50));
-        lines.add(new GameLine("grid5", board, 33, 34, 35, 42, 43, 44, 51, 52,
-                53));
-        lines.add(new GameLine("grid6", board, 54, 55, 56, 63, 64, 65, 72, 73,
-                74));
-        lines.add(new GameLine("grid7", board, 57, 58, 59, 66, 67, 68, 75, 76,
-                77));
-        lines.add(new GameLine("grid8", board, 60, 61, 62, 69, 70, 71, 78, 79,
-                80));
+        lines.add(new GameLine("grid3", board, 27, 28, 29, 36, 37, 38, 45, 46, 47));
+        lines.add(new GameLine("grid4", board, 30, 31, 32, 39, 40, 41, 48, 49, 50));
+        lines.add(new GameLine("grid5", board, 33, 34, 35, 42, 43, 44, 51, 52, 53));
+        lines.add(new GameLine("grid6", board, 54, 55, 56, 63, 64, 65, 72, 73, 74));
+        lines.add(new GameLine("grid7", board, 57, 58, 59, 66, 67, 68, 75, 76, 77));
+        lines.add(new GameLine("grid8", board, 60, 61, 62, 69, 70, 71, 78, 79, 80));
 
         for (GameLine line : lines) {
             lineMap.put(line.id(), line);
@@ -103,15 +90,9 @@ public class Sudoku {
 
         for (int val = 1; val <= 9; ++val) {
 
-            // System.out.println(String.format("Trying %s (%d,%d,%d) [%s]",
-            // line.id(), i, j, val, line.toString()));
-
             if (validate(i, j, val)) {
 
                 line.putValue(j, val);
-
-                // System.out.println(String.format("VALID %s (%d,%d,%d) [%s]",
-                // line.id(), i, j, val, line.toString()));
 
                 if (solve(i, j + 1)) {
                     return true;
@@ -129,8 +110,6 @@ public class Sudoku {
         row.updateStatistics();
 
         if (row.assigned().contains(val)) {
-            // System.out.println(String.format("FAIL: %s (%d, %d, %d)",
-            // row.id(), i, j, val));
             return false;
         }
 
@@ -138,8 +117,6 @@ public class Sudoku {
         col.updateStatistics();
 
         if (col.assigned().contains(val)) {
-            // System.out.println(String.format("FAIL: %s (%d, %d, %d)",
-            // col.id(), i, j, val));
             return false;
         }
 
@@ -147,9 +124,6 @@ public class Sudoku {
         grid.updateStatistics();
 
         if (grid.assigned().contains(val)) {
-            // System.out.println(String.format("FAIL: %s (%d, %d, %d)",
-            // grid.id(), i, j, val));
-
             return false;
         }
 

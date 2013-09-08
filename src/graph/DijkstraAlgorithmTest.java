@@ -93,8 +93,7 @@ public class DijkstraAlgorithmTest {
     }
 
     private void addLane(String laneId, int sourceNo, int destNo, int duration) {
-        Edge lane = new Edge(laneId, nodes.get(sourceNo), nodes.get(destNo),
-                duration);
+        Edge lane = new Edge(laneId, nodes.get(sourceNo), nodes.get(destNo), duration);
         edges.add(lane);
     }
 }
