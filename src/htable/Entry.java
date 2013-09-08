@@ -1,12 +1,12 @@
 package htable;
 
-public class Entry<K,V> {
+public class Entry<K, V> {
 
-	Entry<K,V> next;
+	Entry<K, V> next;
 
 	public K key;
 	public V value;
-	
+
 	public Entry(K key, V value, Entry<K, V> next) {
 		this.key = key;
 		this.value = value;
@@ -27,6 +27,6 @@ public class Entry<K,V> {
 
 	@Override
 	public String toString() {
-		return String.format("(%s, %s)", key, value );
+		return String.format("(%s, %s)", key, value);
 	}
 }

@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class TrieTest {
 	Trie trie;
-	
+
 	@Before
 	public void setUp() {
 		trie = new Trie();
@@ -30,7 +30,7 @@ public class TrieTest {
 	public void containsTheWord() {
 		assertTrue(trie.containsWord("The"));
 	}
-	
+
 	@Test
 	public void containsBrowPrefix() {
 		assertTrue(trie.containsPrefix("Brow"));

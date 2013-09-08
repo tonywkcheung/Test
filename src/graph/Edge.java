@@ -1,10 +1,10 @@
 package graph;
 
-public class Edge  {
-	private final String id; 
+public class Edge {
+	private final String id;
 	private final Vertex source;
 	private final Vertex destination;
-	private final int weight; 
+	private final int weight;
 
 	public Edge(String id, Vertex source, Vertex destination, int weight) {
 		this.id = id;
@@ -16,7 +16,7 @@ public class Edge  {
 	public String getId() {
 		return id;
 	}
-	
+
 	public Vertex getDestination() {
 		return destination;
 	}
@@ -24,12 +24,14 @@ public class Edge  {
 	public Vertex getSource() {
 		return source;
 	}
+
 	public int getWeight() {
 		return weight;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s (%s, %s, %d)", id, source, destination, weight);
+		return String
+		        .format("%s (%s, %s, %d)", id, source, destination, weight);
 	}
-} 
+}

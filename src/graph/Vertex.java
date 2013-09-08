@@ -8,7 +8,7 @@ public class Vertex {
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -46,4 +46,4 @@ public class Vertex {
 	public String toString() {
 		return name;
 	}
-} 
+}

@@ -11,7 +11,6 @@ import org.junit.Test;
 
 public class MergeSortTest {
 
-
 	private Integer[] numbers;
 	private final static int SIZE = 7;
 	private final static int MAX = 20;
@@ -80,4 +79,4 @@ public class MergeSortTest {
 		assertTrue(true);
 	}
 
-} 
+}

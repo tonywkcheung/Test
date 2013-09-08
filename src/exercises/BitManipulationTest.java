@@ -21,8 +21,8 @@ public class BitManipulationTest {
 	}
 
 	// 128 64 32 16 8 4 2 1
-	//   0  1  1  0 0 1 0 0
-	//   1  1  1  0 0 0 0 0
+	// 0 1 1 0 0 1 0 0
+	// 1 1 1 0 0 0 0 0
 	@Test
 	public void bitAndMask() {
 		int mask = -1 << 4;
@@ -54,14 +54,14 @@ public class BitManipulationTest {
 	public void bitApplyMask() {
 		int max = ~0;
 		int i = 2;
-		int j = 6;		
-		int left = max - ((1 << j)-1);
-		int right = ((1 << i)-1);
+		int j = 6;
+		int left = max - ((1 << j) - 1);
+		int right = ((1 << i) - 1);
 		int mask = left | right;
 		System.out.println("max:   " + Integer.toBinaryString(max));
 		System.out.println("left:  " + Integer.toBinaryString(left));
 		System.out.println("right: " + Integer.toBinaryString(right));
-		System.out.println("mask:  " + Integer.toBinaryString(mask));		
+		System.out.println("mask:  " + Integer.toBinaryString(mask));
 	}
 
 }

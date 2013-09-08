@@ -1,4 +1,3 @@
-
 package exercises;
 
 import java.util.ArrayList;
@@ -14,18 +13,19 @@ public class SplitStringIntoWords {
 		if (s == null) {
 			return null;
 		}
-		
+
 		if (s.length() == 0) {
 			return words;
 		}
-		
-		for (int i=1; i <= s.length(); i++) {
-			
+
+		for (int i = 1; i <= s.length(); i++) {
+
 			String candidateWord = s.substring(0, i);
-			
+
 			if (dictionary.contains(candidateWord)) {
-				List<String> restOfWords = splitWord(s.substring(i, s.length()), dictionary);
-				
+				List<String> restOfWords = splitWord(
+				        s.substring(i, s.length()), dictionary);
+
 				if (restOfWords != null) {
 
 					words.add(candidateWord);
@@ -33,12 +33,12 @@ public class SplitStringIntoWords {
 					if (!restOfWords.isEmpty()) {
 						words.addAll(restOfWords);
 					}
-					
+
 					return words;
 				}
 			}
 		}
-		
+
 		return null;
 	}
 

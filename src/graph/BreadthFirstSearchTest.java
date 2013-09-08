@@ -12,7 +12,7 @@ import org.junit.Test;
 public class BreadthFirstSearchTest {
 	private List<Vertex> nodes;
 	private List<Edge> edges;
-	
+
 	Graph graph;
 	BreadthFirstSearch bfs;
 
@@ -20,7 +20,7 @@ public class BreadthFirstSearchTest {
 	public void setUp() {
 		nodes = new ArrayList<Vertex>();
 		edges = new ArrayList<Edge>();
-		
+
 		nodes.add(new Vertex("Node_0", "Tony"));
 		nodes.add(new Vertex("Node_1", "James"));
 		nodes.add(new Vertex("Node_2", "Jimmy"));
@@ -40,19 +40,19 @@ public class BreadthFirstSearchTest {
 		addLane("Edge_8", 2, 4, 0);
 		addLane("Edge_9", 3, 0, 0);
 		addLane("Edge_10", 3, 4, 0);
-		addLane("Edge_11", 3, 5, 0);		
+		addLane("Edge_11", 3, 5, 0);
 		addLane("Edge_13", 4, 3, 0);
-		addLane("Edge_14", 4, 5, 0);		
-		addLane("Edge_15", 4, 2, 0);		
-		addLane("Edge_19", 5, 4, 0);		
-		addLane("Edge_20", 5, 3, 0);		
+		addLane("Edge_14", 4, 5, 0);
+		addLane("Edge_15", 4, 2, 0);
+		addLane("Edge_19", 5, 4, 0);
+		addLane("Edge_20", 5, 3, 0);
 
 		// Lets check from location Loc_1 to Loc_10
 		graph = new Graph(nodes, edges);
 
 		bfs = new BreadthFirstSearch(graph);
 	}
-	
+
 	@Test
 	public void doesTonyLinkToJeremy() {
 		bfs.search(nodes.get(0));
@@ -63,7 +63,7 @@ public class BreadthFirstSearchTest {
 
 		printPath(path);
 	}
-	
+
 	@Test
 	public void doesNatLinkJames() {
 		bfs.search(nodes.get(4));
@@ -92,7 +92,7 @@ public class BreadthFirstSearchTest {
 	}
 
 	private void printPath(LinkedList<Vertex> path) {
-		int i=0;
+		int i = 0;
 		for (Vertex vertex : path) {
 			if (i > 0) {
 				System.out.print("->");
@@ -104,7 +104,8 @@ public class BreadthFirstSearchTest {
 	}
 
 	private void addLane(String laneId, int sourceNo, int destNo, int duration) {
-		Edge lane = new Edge(laneId,nodes.get(sourceNo), nodes.get(destNo), duration);
+		Edge lane = new Edge(laneId, nodes.get(sourceNo), nodes.get(destNo),
+		        duration);
 		edges.add(lane);
 	}
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 public class T9SpellingTest {
 
 	T9Spelling t9Spelling = new T9Spelling();
-	
+
 	@Test
 	public void testHi() {
 		assertEquals("44 444", t9Spelling.toNumbers("hi"));
@@ -25,7 +25,8 @@ public class T9SpellingTest {
 
 	@Test
 	public void testHelloWorld() {
-		assertEquals("4433555 555666096667775553", t9Spelling.toNumbers("hello world"));
+		assertEquals("4433555 555666096667775553",
+		        t9Spelling.toNumbers("hello world"));
 	}
 
 }

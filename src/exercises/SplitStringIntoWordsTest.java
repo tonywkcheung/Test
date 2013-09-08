@@ -1,4 +1,3 @@
-
 package exercises;
 
 import static org.junit.Assert.assertEquals;
@@ -11,18 +10,18 @@ import java.util.Set;
 
 import org.junit.Test;
 
-
 public class SplitStringIntoWordsTest {
 
 	@Test
 	public void splitPeanutButterSuccessfully() {
-		
+
 		Set<String> dictionary = new HashSet<String>();
 		dictionary.add("peanut");
 		dictionary.add("butter");
 		String peanutButter = "peanutbutter";
-		
-		List<String> words = SplitStringIntoWords.splitWord(peanutButter, dictionary);
+
+		List<String> words = SplitStringIntoWords.splitWord(peanutButter,
+		        dictionary);
 
 		assertEquals(2, words.size());
 		assertEquals("peanut", words.get(0));
@@ -31,15 +30,16 @@ public class SplitStringIntoWordsTest {
 
 	@Test
 	public void splitPeanutButterJellySuccessfully() {
-		
+
 		Set<String> dictionary = new HashSet<String>();
 		dictionary.add("peanut");
 		dictionary.add("butter");
 		dictionary.add("jelly");
 		dictionary.add("jel");
 		String peanutButterJelly = "peanutbutterjelly";
-		
-		List<String> words = SplitStringIntoWords.splitWord(peanutButterJelly, dictionary);
+
+		List<String> words = SplitStringIntoWords.splitWord(peanutButterJelly,
+		        dictionary);
 
 		assertEquals(3, words.size());
 		assertEquals("peanut", words.get(0));
@@ -49,28 +49,30 @@ public class SplitStringIntoWordsTest {
 
 	@Test
 	public void splitPeanutButterJellyXxxUnsuccessfully() {
-		
+
 		Set<String> dictionary = new HashSet<String>();
 		dictionary.add("peanut");
 		dictionary.add("butter");
 		dictionary.add("jelly");
 
 		String peanutButterJelly = "peanutbutterjellyxxx";
-		List<String> words = SplitStringIntoWords.splitWord(peanutButterJelly, dictionary);
+		List<String> words = SplitStringIntoWords.splitWord(peanutButterJelly,
+		        dictionary);
 
 		assertNull(words);
 	}
 
 	@Test
 	public void splitPeanutButterUnsuccessfully() {
-		
+
 		Set<String> dictionary = new HashSet<String>();
 		dictionary.add("peanut");
 		dictionary.add("butt");
 		dictionary.add("butter");
-		
+
 		String peanutButter = "peanutbutter";
-		List<String> words = SplitStringIntoWords.splitWord(peanutButter, dictionary);
+		List<String> words = SplitStringIntoWords.splitWord(peanutButter,
+		        dictionary);
 
 		assertNotNull(words);
 		assertEquals(2, words.size());

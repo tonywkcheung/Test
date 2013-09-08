@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class T9Spelling {
-	
+
 	static Map<String, Key> keyMap = null;
-	
-	public T9Spelling () {
-		
+
+	public T9Spelling() {
+
 		keyMap = new HashMap<String, Key>();
 
 		keyMap.put("a", new Key("a", "2", 2));
@@ -39,36 +39,36 @@ public class T9Spelling {
 		keyMap.put("z", new Key("z", "9999", 9));
 		keyMap.put(" ", new Key(" ", "0", 0));
 	}
-	
+
 	public String toNumbers(String message) {
-		
+
 		if (message == null || message.length() == 0) {
 			return null;
 		}
-		
+
 		StringBuffer sb = new StringBuffer();
 		Key prevKey = null;
-		
-		for (int i=0; i<message.length(); i++) {
+
+		for (int i = 0; i < message.length(); i++) {
 			String letter = Character.toString(message.charAt(i)).toLowerCase();
 			Key key = keyMap.get(letter);
 
 			if (prevKey != null && prevKey.digit == key.digit) {
 				sb.append(" "); // insert pause
 			}
-			
+
 			sb.append(key.sequence);
-			
+
 			prevKey = key;
 		}
 		return sb.toString();
 	}
-	
+
 	public class Key {
 		public String letter;
 		public String sequence;
 		public int digit;
-		
+
 		public Key(String c, String seq, int digit) {
 			this.letter = c;
 			this.sequence = seq;

@@ -8,7 +8,7 @@ import org.junit.Test;
 public class ChooseNFromKTest {
 
 	static ChooseNFromK chooseNFromK;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		chooseNFromK = new ChooseNFromK();
@@ -23,7 +23,6 @@ public class ChooseNFromKTest {
 	public void choose0From4() {
 		assertEquals(1, chooseNFromK.calc(4, 0));
 	}
-
 
 	@Test
 	public void choose2From4() {

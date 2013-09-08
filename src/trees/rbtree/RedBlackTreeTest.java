@@ -12,7 +12,6 @@ import org.junit.Test;
  */
 public class RedBlackTreeTest {
 
-
 	@Before
 	public void setUp() {
 	}
@@ -85,13 +84,13 @@ public class RedBlackTreeTest {
 	 * possible combinations of red and black.
 	 */
 	@Test
-	public  void removalTest() {
+	public void removalTest() {
 
 		RedBlackTree[] treesToBeRemoved = removalTestTemplates();
-		
+
 		for (RedBlackTree t : treesToBeRemoved) {
 			int nodesToColor = count(t.root) - 2; // We don't recolor the root
-												  // or toDelete
+			                                      // or toDelete
 			for (int k = 0; k < Math.pow(2, nodesToColor); k++) {
 				RedBlackTree rb = new RedBlackTree();
 				rb.root = copy(t.root);
@@ -127,7 +126,7 @@ public class RedBlackTreeTest {
 				}
 				if (good) {
 					Comparable<?> d = toDelete.data;
-					//System.out.println(dump(rb.root));
+					// System.out.println(dump(rb.root));
 					rb.remove(d);
 					checkRedBlack(rb);
 					for (Integer j = 1; j <= filledSize; j++) {
@@ -146,7 +145,7 @@ public class RedBlackTreeTest {
 		if (n == null)
 			return "";
 		return "(" + dump(n.left) + n.data + "NRBD".charAt(n.color + 1)
-				+ dump(n.right) + ")";
+		        + dump(n.right) + ")";
 	}
 
 	/**
@@ -345,7 +344,7 @@ public class RedBlackTreeTest {
 				if (previous != null) {
 					if (n.data.compareTo(previous) <= 0)
 						throw new IllegalStateException(n.data
-								+ " is not larger than " + previous);
+						        + " is not larger than " + previous);
 					previous = n.data;
 				}
 			}
@@ -362,29 +361,29 @@ public class RedBlackTreeTest {
 		int nright = checkRedBlack(n.right, root);
 		if (nleft != nright)
 			throw new IllegalStateException("Left and right children of "
-					+ n.data + " have different black depths");
+			        + n.data + " have different black depths");
 		if (n.parent == null) {
 			if (n != root)
 				throw new IllegalStateException(n.data
-						+ " is not root and has no parent");
+				        + " is not root and has no parent");
 			if (n.color != RedBlackTree.BLACK)
 				throw new IllegalStateException("Root " + n.data
-						+ " is not black");
+				        + " is not black");
 		} else {
 			if (n.color == RedBlackTree.RED
-					&& n.parent.color == RedBlackTree.RED)
+			        && n.parent.color == RedBlackTree.RED)
 				throw new IllegalStateException("Parent of rred " + n.data
-						+ " is red");
+				        + " is red");
 			if (n == root)
 				throw new IllegalStateException(n.data
-						+ " is root and has a parent");
+				        + " is root and has a parent");
 		}
 		if (n.left != null && n.left.parent != n)
 			throw new IllegalStateException("Left child of " + n.data
-					+ " has bad parent link");
+			        + " has bad parent link");
 		if (n.right != null && n.right.parent != n)
 			throw new IllegalStateException("Right child of " + n.data
-					+ " has bad parent link");
+			        + " has bad parent link");
 		if (n.color != RedBlackTree.RED && n.color != RedBlackTree.BLACK)
 			throw new IllegalStateException(n.data + " has color " + n.color);
 		return n.color + nleft;
@@ -425,8 +424,10 @@ class PermutationGenerator {
 			String shorterWord = word.substring(0, i) + word.substring(i + 1);
 
 			// Generate all permutations of the simpler word
-			PermutationGenerator shorterPermutationGenerator = new PermutationGenerator(shorterWord);
-			ArrayList<String> shorterWordPermutations = shorterPermutationGenerator.getPermutations();
+			PermutationGenerator shorterPermutationGenerator = new PermutationGenerator(
+			        shorterWord);
+			ArrayList<String> shorterWordPermutations = shorterPermutationGenerator
+			        .getPermutations();
 
 			// Add the removed character to the front of
 			// each permutation of the simpler word,

@@ -2,9 +2,8 @@ package trees.rbtree;
 
 /**
  * A node of a red-black tree stores a data item and references of the child
- * nodes to the left and to the right. The color is the "cost" of passing
- * the node; 1 for black or 0 for red. Temporarily, it may be set to 2 or
- * -1.
+ * nodes to the left and to the right. The color is the "cost" of passing the
+ * node; 1 for black or 0 for red. Temporarily, it may be set to 2 or -1.
  */
 public class Node {
 	@SuppressWarnings("rawtypes")
@@ -88,4 +87,3 @@ public class Node {
 		}
 	}
 }
-

@@ -17,7 +17,7 @@ public class DijkstraAlgorithmTest {
 	public void setUp() {
 		nodes = new ArrayList<Vertex>();
 		edges = new ArrayList<Edge>();
-		
+
 		nodes.add(new Vertex("Node_0", "PVD"));
 		nodes.add(new Vertex("Node_1", "LGA"));
 		nodes.add(new Vertex("Node_2", "MIA"));
@@ -38,22 +38,22 @@ public class DijkstraAlgorithmTest {
 		addLane("Edge_8", 2, 4, 1120);
 		addLane("Edge_9", 3, 0, 849);
 		addLane("Edge_10", 3, 4, 802);
-		addLane("Edge_11", 3, 5, 1843);		
-		addLane("Edge_12", 3, 7, 1743);	
+		addLane("Edge_11", 3, 5, 1843);
+		addLane("Edge_12", 3, 7, 1743);
 		addLane("Edge_13", 4, 3, 802);
-		addLane("Edge_14", 4, 5, 1743);		
-		addLane("Edge_15", 4, 2, 1120);		
-		addLane("Edge_16", 4, 1, 1387);		
+		addLane("Edge_14", 4, 5, 1743);
+		addLane("Edge_15", 4, 2, 1120);
+		addLane("Edge_16", 4, 1, 1387);
 		addLane("Edge_17", 5, 6, 2555);
-		addLane("Edge_18", 5, 7, 337);		
-		addLane("Edge_19", 5, 4, 1233);		
-		addLane("Edge_20", 5, 3, 1743);		
-		addLane("Edge_21", 6, 5, 2555);		
-		addLane("Edge_22", 7, 5, 337);		
-		addLane("Edge_23", 7, 3, 1843);		
+		addLane("Edge_18", 5, 7, 337);
+		addLane("Edge_19", 5, 4, 1233);
+		addLane("Edge_20", 5, 3, 1743);
+		addLane("Edge_21", 6, 5, 2555);
+		addLane("Edge_22", 7, 5, 337);
+		addLane("Edge_23", 7, 3, 1843);
 
 	}
-	
+
 	@Test
 	public void dijkstraShortestPath() {
 		// Lets check from location Loc_1 to Loc_10
@@ -69,7 +69,8 @@ public class DijkstraAlgorithmTest {
 		for (Vertex vertex : path) {
 			if (prevVertex != null) {
 				for (Edge edge : edges) {
-					if (edge.getSource().equals(prevVertex) && edge.getDestination().equals(vertex)) {
+					if (edge.getSource().equals(prevVertex)
+					        && edge.getDestination().equals(vertex)) {
 						System.out.println(edge);
 					}
 				}
@@ -82,7 +83,7 @@ public class DijkstraAlgorithmTest {
 
 	@Test
 	public void dijkstraNoPath() {
-		
+
 		Graph graph = new Graph(nodes, new ArrayList<Edge>());
 		DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
 		dijkstra.execute(nodes.get(0));
@@ -92,7 +93,8 @@ public class DijkstraAlgorithmTest {
 	}
 
 	private void addLane(String laneId, int sourceNo, int destNo, int duration) {
-		Edge lane = new Edge(laneId,nodes.get(sourceNo), nodes.get(destNo), duration);
+		Edge lane = new Edge(laneId, nodes.get(sourceNo), nodes.get(destNo),
+		        duration);
 		edges.add(lane);
 	}
 }

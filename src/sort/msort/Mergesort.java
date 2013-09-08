@@ -1,12 +1,10 @@
 package sort.msort;
 
-
 public class Mergesort<T extends Comparable<T>> {
 
 	protected T swapSpace[];
 
-	public void sort(T array[])
-	{
+	public void sort(T array[]) {
 		if (array != null && array.length > 1) {
 			int maxLength = array.length;
 			swapSpace = array.clone();
@@ -15,8 +13,7 @@ public class Mergesort<T extends Comparable<T>> {
 		}
 	}
 
-	protected void mergeSort(T[] array, int left, int right)
-	{
+	protected void mergeSort(T[] array, int left, int right) {
 		if (left < right) {
 			int mid;
 
@@ -27,32 +24,29 @@ public class Mergesort<T extends Comparable<T>> {
 		}
 	}
 
-	protected void merge(T[] array, int left, int middle, int right)
-	{
+	protected void merge(T[] array, int left, int middle, int right) {
 		int firstHalf, secondHalf, count;
 
 		firstHalf = count = left;
 		secondHalf = middle + 1;
-		
+
 		while ((firstHalf <= middle) && (secondHalf <= right)) {
-			
+
 			if (array[secondHalf].compareTo(array[firstHalf]) < 0) {
 				swapSpace[count++] = array[secondHalf++];
-			}
-			else {
+			} else {
 				swapSpace[count++] = array[firstHalf++];
 			}
 		}
-		
+
 		if (firstHalf <= middle) {
 			while (firstHalf <= middle)
 				swapSpace[count++] = array[firstHalf++];
-		}
-		else {
+		} else {
 			while (secondHalf <= right)
 				swapSpace[count++] = array[secondHalf++];
 		}
-		
+
 		for (count = left; count <= right; count++) {
 			array[count] = swapSpace[count];
 		}

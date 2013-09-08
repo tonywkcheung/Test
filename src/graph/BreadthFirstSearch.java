@@ -16,37 +16,37 @@ public class BreadthFirstSearch {
 	private Map<Vertex, Vertex> parent;
 
 	public BreadthFirstSearch(Graph graph) {
-		
+
 		this.nodes = new ArrayList<Vertex>(graph.getVertices());
 		this.edges = new ArrayList<Edge>(graph.getEdges());
-		
+
 		state = new HashMap<Vertex, String>();
 		parent = new HashMap<Vertex, Vertex>();
 	}
 
 	private void initialize(Vertex source) {
-		
+
 		for (Vertex node : this.nodes) {
 			if (!node.equals(source)) {
 				state.put(node, "undiscovered");
 			}
 		}
 	}
-	
+
 	public void search(Vertex source) {
-		
+
 		initialize(source);
 
 		Queue<Vertex> queue = new LinkedList<Vertex>();
 		queue.add(source);
-		
+
 		while (!queue.isEmpty()) {
-			
+
 			Vertex current = queue.remove();
-			
+
 			List<Vertex> adjacentNodes = getAdjacent(current);
 			for (Vertex target : adjacentNodes) {
-				
+
 				if (state.get(target).equals("undiscovered")) {
 					state.put(target, "discovered");
 					parent.put(target, current);
@@ -88,4 +88,4 @@ public class BreadthFirstSearch {
 		return path;
 	}
 
-} 
+}

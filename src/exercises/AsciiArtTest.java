@@ -9,7 +9,6 @@ import org.junit.Test;
 
 public class AsciiArtTest {
 
-
 	@Test
 	public void printSimpleArt() {
 		AsciiArt asciiArt = new AsciiArt();
@@ -33,12 +32,12 @@ public class AsciiArtTest {
 		String gbArt = asciiArt.toAsciiArt(gbText);
 		System.out.println(gbArt);
 	}
-	
+
 	public String readTextFromFile(String filename) {
 		File file = new File(filename);
 		FileInputStream fis;
-		byte[] buffer = new byte[(int)file.length()];
-		
+		byte[] buffer = new byte[(int) file.length()];
+
 		try {
 			fis = new FileInputStream(file);
 			fis.read(buffer);
@@ -48,7 +47,7 @@ public class AsciiArtTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return new String(buffer);
 	}
 }

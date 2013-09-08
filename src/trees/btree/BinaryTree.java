@@ -6,45 +6,40 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-
 public class BinaryTree<T extends Comparable<T>> {
 
 	Node<T> root;
 	List<T> path;
 	int size = 0;
-	
+
 	public void insert(T value) {
-		
+
 		Node<T> newNode = new Node<T>(value, null, null);
-		
+
 		if (root == null) {
 			root = newNode;
-		}
-		else {
+		} else {
 			Node<T> currentNode = root;
-			
+
 			while (true) {
 				if (value.compareTo(currentNode.value) < 0) {
 					if (currentNode.left == null) {
-						currentNode.left = newNode; 
+						currentNode.left = newNode;
 						break;
-					}
-					else {
+					} else {
 						currentNode = currentNode.left;
 					}
-				}
-				else {
+				} else {
 					if (currentNode.right == null) {
-						currentNode.right = newNode; 
+						currentNode.right = newNode;
 						break;
-					}
-					else {
+					} else {
 						currentNode = currentNode.right;
 					}
 				}
 			}
 		}
-		
+
 		size++;
 	}
 
@@ -52,25 +47,22 @@ public class BinaryTree<T extends Comparable<T>> {
 
 		if (root == null) {
 			return false;
-		}
-		else {
+		} else {
 			Node<T> currentNode = root;
-			
+
 			while (currentNode != null) {
 				if (value.compareTo(currentNode.value) == 0) {
 					return true;
-				}
-				else if (value.compareTo(currentNode.value) < 0) {
+				} else if (value.compareTo(currentNode.value) < 0) {
 					currentNode = currentNode.left;
-				}
-				else {
+				} else {
 					currentNode = currentNode.right;
 				}
 			}
 		}
 		return false;
 	}
-	
+
 	public Node<T> getRoot() {
 		return root;
 	}
@@ -79,7 +71,7 @@ public class BinaryTree<T extends Comparable<T>> {
 		path = new ArrayList<T>();
 	}
 
-	public String getPath() {		
+	public String getPath() {
 		StringBuffer sb = new StringBuffer();
 		for (T value : path) {
 			sb.append(value);
@@ -92,8 +84,8 @@ public class BinaryTree<T extends Comparable<T>> {
 		if (path != null) {
 			path.add(node.value);
 		}
-		
-		//System.out.print(node.value.toString() + ",");
+
+		// System.out.print(node.value.toString() + ",");
 	}
 
 	public void preOrderTraversal(Node<T> node) {
@@ -106,9 +98,8 @@ public class BinaryTree<T extends Comparable<T>> {
 		}
 	}
 
-
 	public void inOrderTraversal(Node<T> node) {
-		
+
 		if (node.left != null) {
 			inOrderTraversal(node.left);
 		}
@@ -130,52 +121,50 @@ public class BinaryTree<T extends Comparable<T>> {
 
 	public void iterativeInOrderTraversal(Node<T> node) {
 		Stack<Node<T>> stack = new Stack<Node<T>>();
-		
+
 		Node<T> currentNode = node;
 
 		while (currentNode != null || !stack.isEmpty()) {
-			
-			if (currentNode != null) {			
+
+			if (currentNode != null) {
 				stack.push(currentNode);
 				currentNode = currentNode.left;
-			}
-			else if (!stack.isEmpty()){
-				currentNode = stack.pop();			
-				visit(currentNode);	
+			} else if (!stack.isEmpty()) {
+				currentNode = stack.pop();
+				visit(currentNode);
 				currentNode = currentNode.right;
 			}
-		}		
+		}
 	}
 
 	public void iterativePreOrderTraversal(Node<T> node) {
 		Stack<Node<T>> stack = new Stack<Node<T>>();
-		
+
 		Node<T> currentNode = node;
 
 		while (currentNode != null || !stack.isEmpty()) {
-			
-			if (currentNode != null) {			
-				visit(currentNode);	
+
+			if (currentNode != null) {
+				visit(currentNode);
 				stack.push(currentNode);
 				currentNode = currentNode.left;
-			}
-			else if (!stack.isEmpty()){
-				currentNode = stack.pop();			
+			} else if (!stack.isEmpty()) {
+				currentNode = stack.pop();
 				currentNode = currentNode.right;
 			}
-		}		
+		}
 	}
-	
+
 	public void iterativePostOrderTraversal(Node<T> node) {
 		Stack<Node<T>> stack1 = new Stack<Node<T>>();
 		Stack<Node<T>> stack2 = new Stack<Node<T>>();
-		
+
 		stack1.push(node);
 
 		while (!stack1.isEmpty()) {
-			
+
 			Node<T> currentNode = stack1.pop();
-			
+
 			if (currentNode.left != null) {
 				stack1.push(currentNode.left);
 			}
@@ -187,26 +176,26 @@ public class BinaryTree<T extends Comparable<T>> {
 
 		while (!stack2.isEmpty()) {
 			visit(stack2.pop());
-		}		
+		}
 	}
 
 	public void breadthFirstTraversal(Node<T> node) {
 		Queue<Node<T>> queue = new LinkedList<Node<T>>();
-		
+
 		queue.add(node);
 
 		while (!queue.isEmpty()) {
-			
+
 			Node<T> currentNode = queue.remove();
-			
+
 			visit(currentNode);
-			
-			if (currentNode.left != null){
+
+			if (currentNode.left != null) {
 				queue.add(currentNode.left);
 			}
-			if (currentNode.right != null){
+			if (currentNode.right != null) {
 				queue.add(currentNode.right);
 			}
-		}		
-	}	
+		}
+	}
 }

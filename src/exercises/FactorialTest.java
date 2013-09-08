@@ -8,7 +8,7 @@ import org.junit.Test;
 public class FactorialTest {
 
 	static Factorial factorial;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		factorial = new Factorial();

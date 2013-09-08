@@ -14,27 +14,28 @@ public class DepthFirstSearch {
 	private Map<Vertex, Vertex> parent;
 
 	public DepthFirstSearch(Graph graph) {
-		
+
 		this.edges = new ArrayList<Edge>(graph.getEdges());
-		
+
 		state = new HashMap<Vertex, String>();
 		parent = new HashMap<Vertex, Vertex>();
 	}
-	
+
 	public void search(Vertex v) {
-		
+
 		state.put(v, "discovered");
 
 		List<Vertex> adjacentNodes = getAdjacent(v);
 		for (Vertex adj : adjacentNodes) {
 
-			if (!state.containsKey(adj) || state.get(adj).equals("undiscovered")) {
+			if (!state.containsKey(adj)
+			        || state.get(adj).equals("undiscovered")) {
 				parent.put(adj, v);
-				
+
 				search(adj);
 			}
 		}
-		
+
 		state.put(v, "processed");
 
 	}
@@ -70,4 +71,4 @@ public class DepthFirstSearch {
 		return path;
 	}
 
-} 
+}

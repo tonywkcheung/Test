@@ -26,7 +26,7 @@ public class Trie {
 		Node node = null;
 
 		if (!root.containsKey(word[0])) {
-			root.put(word[0], new Node(word[0], ""+ word[0]));
+			root.put(word[0], new Node(word[0], "" + word[0]));
 		}
 
 		node = root.get(word[0]);
@@ -61,7 +61,8 @@ public class Trie {
 
 	private boolean contains(char[] s, boolean isWord) {
 		Node node = getNode(s);
-		return (node != null && node.isWord() && isWord) || (!isWord && node != null);
+		return (node != null && node.isWord() && isWord)
+		        || (!isWord && node != null);
 	}
 
 	private Node getNode(char[] chars) {
@@ -77,9 +78,9 @@ public class Trie {
 
 		return node;
 	}
-	
+
 	public List<String> getMatchingWords(String subString) {
-		
+
 		List<String> words = new ArrayList<String>();
 		Node n = getPrefix(subString);
 
@@ -92,18 +93,18 @@ public class Trie {
 				words.add(node.getValue());
 			}
 		}
-		
+
 		return words;
 	}
-	
+
 	public String getLongestCommonSubstring() {
 		List<Node> nodes = new ArrayList<Node>();
 		for (Node node : root.values()) {
-			for (Node child: node.getChildren()) {
+			for (Node child : node.getChildren()) {
 				nodes.addAll(getNodes(child));
 			}
 		}
-		
+
 		for (Node node : nodes) {
 			System.out.println(node);
 		}
@@ -111,16 +112,16 @@ public class Trie {
 	}
 
 	public List<Node> getNodes(Node n) {
-		
+
 		List<Node> nodes = new ArrayList<Node>();
 		nodes.add(n);
-		
+
 		if (n != null) {
-			for (Node child: n.getChildren()) {
+			for (Node child : n.getChildren()) {
 				nodes.addAll(getNodes(child));
 			}
 		}
-		
+
 		return nodes;
 	}
 

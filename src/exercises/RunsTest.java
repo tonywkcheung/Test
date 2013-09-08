@@ -12,25 +12,26 @@ public class RunsTest {
 	Runs runs = new Runs();
 
 	@Test
-	public void totalCountForAabcdIs24() {		
+	public void totalCountForAabcdIs24() {
 		assertEquals(24, runs.countPermutationsWithSameNumberOfRuns("aabcd"));
 	}
 
 	@Test
-	public void totalCountForBookkeeperIs7200() {		
-		assertEquals(7200, runs.countPermutationsWithSameNumberOfRuns("bookkeeper"));
+	public void totalCountForBookkeeperIs7200() {
+		assertEquals(7200,
+		        runs.countPermutationsWithSameNumberOfRuns("bookkeeper"));
 	}
 
 	@Test
-	public void countRunsForZookeeperIs7() {		
+	public void countRunsForZookeeperIs7() {
 		assertEquals(7, runs.runCount("zookeeper"));
 	}
 
 	@Test
-	public void countRunsForAabcdIs4() {		
+	public void countRunsForAabcdIs4() {
 		assertEquals(4, runs.runCount("aabcd"));
 	}
-	
+
 	@Test
 	public void generatePermutationsForAbc() {
 		Set<String> words = runs.generatePermutations("ABC");
