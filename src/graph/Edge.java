@@ -1,37 +1,37 @@
 package graph;
 
 public class Edge {
-	private final String id;
-	private final Vertex source;
-	private final Vertex destination;
-	private final int weight;
+    private final String id;
+    private final Vertex source;
+    private final Vertex destination;
+    private final int weight;
 
-	public Edge(String id, Vertex source, Vertex destination, int weight) {
-		this.id = id;
-		this.source = source;
-		this.destination = destination;
-		this.weight = weight;
-	}
+    public Edge(String id, Vertex source, Vertex destination, int weight) {
+        this.id = id;
+        this.source = source;
+        this.destination = destination;
+        this.weight = weight;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public Vertex getDestination() {
-		return destination;
-	}
+    public Vertex getDestination() {
+        return destination;
+    }
 
-	public Vertex getSource() {
-		return source;
-	}
+    public Vertex getSource() {
+        return source;
+    }
 
-	public int getWeight() {
-		return weight;
-	}
+    public int getWeight() {
+        return weight;
+    }
 
-	@Override
-	public String toString() {
-		return String
-		        .format("%s (%s, %s, %d)", id, source, destination, weight);
-	}
+    @Override
+    public String toString() {
+        return String
+                .format("%s (%s, %s, %d)", id, source, destination, weight);
+    }
 }
