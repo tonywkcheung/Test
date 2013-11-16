@@ -1,4 +1,4 @@
-package sort.msort;
+package sort;
 
 public class Mergesort<T extends Comparable<T>> {
 

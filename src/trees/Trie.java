@@ -1,13 +1,15 @@
-package trees.trie;
+package trees;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import trees.TrieNode;
+
 public class Trie {
 
-    private Map<Character, Node> root = new HashMap<Character, Node>();
+    private Map<Character, TrieNode> root = new HashMap<Character, TrieNode>();
 
     public Trie() {
     }
@@ -23,17 +25,17 @@ public class Trie {
     }
 
     public void addWord(char[] word) {
-        Node node = null;
+        TrieNode node = null;
 
         if (!root.containsKey(word[0])) {
-            root.put(word[0], new Node(word[0], "" + word[0]));
+            root.put(word[0], new TrieNode(word[0], "" + word[0]));
         }
 
         node = root.get(word[0]);
 
         for (int i = 1; i < word.length; i++) {
             if (node.getChild(word[i]) == null) {
-                node.addChild(new Node(word[i], node.getValue() + word[i]));
+                node.addChild(new TrieNode(word[i], node.getValue() + word[i]));
             }
 
             node = node.getChild(word[i]);
@@ -50,23 +52,23 @@ public class Trie {
         return contains(word.toCharArray(), true);
     }
 
-    public Node getWord(String word) {
-        Node node = getNode(word.toCharArray());
+    public TrieNode getWord(String word) {
+        TrieNode node = getNode(word.toCharArray());
         return node != null && node.isWord() ? node : null;
     }
 
-    public Node getPrefix(String prefix) {
+    public TrieNode getPrefix(String prefix) {
         return getNode(prefix.toCharArray());
     }
 
     private boolean contains(char[] s, boolean isWord) {
-        Node node = getNode(s);
+        TrieNode node = getNode(s);
         return (node != null && node.isWord() && isWord)
                 || (!isWord && node != null);
     }
 
-    private Node getNode(char[] chars) {
-        Node node = root.get(chars[0]);
+    private TrieNode getNode(char[] chars) {
+        TrieNode node = root.get(chars[0]);
 
         for (int i = 1; i < chars.length && node != null; i++) {
             node = node.getChild(chars[i]);
@@ -82,13 +84,13 @@ public class Trie {
     public List<String> getMatchingWords(String subString) {
 
         List<String> words = new ArrayList<String>();
-        Node n = getPrefix(subString);
+        TrieNode n = getPrefix(subString);
 
         if (n == null) {
             return null;
         }
 
-        for (Node node : getNodes(n)) {
+        for (TrieNode node : getNodes(n)) {
             if (node.isWord()) {
                 words.add(node.getValue());
             }
@@ -98,26 +100,26 @@ public class Trie {
     }
 
     public String getLongestCommonSubstring() {
-        List<Node> nodes = new ArrayList<Node>();
-        for (Node node : root.values()) {
-            for (Node child : node.getChildren()) {
+        List<TrieNode> nodes = new ArrayList<TrieNode>();
+        for (TrieNode node : root.values()) {
+            for (TrieNode child : node.getChildren()) {
                 nodes.addAll(getNodes(child));
             }
         }
 
-        for (Node node : nodes) {
+        for (TrieNode node : nodes) {
             System.out.println(node);
         }
         return null;
     }
 
-    public List<Node> getNodes(Node n) {
+    public List<TrieNode> getNodes(TrieNode n) {
 
-        List<Node> nodes = new ArrayList<Node>();
+        List<TrieNode> nodes = new ArrayList<TrieNode>();
         nodes.add(n);
 
         if (n != null) {
-            for (Node child : n.getChildren()) {
+            for (TrieNode child : n.getChildren()) {
                 nodes.addAll(getNodes(child));
             }
         }

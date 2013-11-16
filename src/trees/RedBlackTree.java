@@ -1,11 +1,11 @@
-package trees.rbtree;
+package trees;
 
 /**
  * This class implements a red-black tree whose nodes hold objects that
  * implement the Comparable interface.
  */
 public class RedBlackTree {
-    Node root; // Package access, for testing
+    RedBlackNode root; // Package access, for testing
 
     static final int BLACK = 1;
     static final int RED = 0;
@@ -27,7 +27,7 @@ public class RedBlackTree {
      */
     @SuppressWarnings("rawtypes")
     public void add(Comparable obj) {
-        Node newNode = new Node();
+        RedBlackNode newNode = new RedBlackNode();
         newNode.data = obj;
         newNode.left = null;
         newNode.right = null;
@@ -48,7 +48,7 @@ public class RedBlackTree {
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public boolean find(Comparable obj) {
-        Node current = root;
+        RedBlackNode current = root;
         while (current != null) {
             int d = current.data.compareTo(obj);
             if (d == 0)
@@ -72,7 +72,7 @@ public class RedBlackTree {
     public void remove(Comparable obj) {
         // Find node to be removed
 
-        Node toBeRemoved = root;
+        RedBlackNode toBeRemoved = root;
         boolean found = false;
         while (!found && toBeRemoved != null) {
             int d = toBeRemoved.data.compareTo(obj);
@@ -96,7 +96,7 @@ public class RedBlackTree {
         // If one of the children is empty, use the other
 
         if (toBeRemoved.left == null || toBeRemoved.right == null) {
-            Node newChild;
+            RedBlackNode newChild;
             if (toBeRemoved.left == null) {
                 newChild = toBeRemoved.right;
             } else {
@@ -118,7 +118,7 @@ public class RedBlackTree {
 
         // Find smallest element of the right subtree
 
-        Node smallest = toBeRemoved.right;
+        RedBlackNode smallest = toBeRemoved.right;
         while (smallest.left != null) {
             smallest = smallest.left;
         }
@@ -149,10 +149,10 @@ public class RedBlackTree {
          * @param n
          *            the visited node
          */
-        void visit(Node n);
+        void visit(RedBlackNode n);
     }
 
-    private static void inOrderVisit(Node n, Visitor v) {
+    private static void inOrderVisit(RedBlackNode n, Visitor v) {
         if (n == null)
             return;
         inOrderVisit(n.left, v);
@@ -166,7 +166,7 @@ public class RedBlackTree {
      * @param newNode
      *            the node that has been added
      */
-    private void fixAfterAdd(Node newNode) {
+    private void fixAfterAdd(RedBlackNode newNode) {
         if (newNode.parent == null) {
             newNode.color = BLACK;
         } else {
@@ -184,7 +184,7 @@ public class RedBlackTree {
      * @param removed
      *            the node that is to be removed
      */
-    private void fixBeforeRemove(Node removed) {
+    private void fixBeforeRemove(RedBlackNode removed) {
         if (removed.color == RED) {
             return;
         }
@@ -209,7 +209,7 @@ public class RedBlackTree {
      *            a node with two children, or null (in which case nothing is
      *            done)
      */
-    private void bubbleUp(Node parent) {
+    private void bubbleUp(RedBlackNode parent) {
         if (parent == null) {
             return;
         }
@@ -217,7 +217,7 @@ public class RedBlackTree {
         parent.left.color--;
         parent.right.color--;
 
-        Node child = parent.left;
+        RedBlackNode child = parent.left;
         if (child.color == NEGATIVE_RED) {
             fixNegativeRed(child);
             return;
@@ -262,14 +262,14 @@ public class RedBlackTree {
      * @param child
      *            the child with a red parent
      */
-    private void fixDoubleRed(Node child) {
-        Node parent = child.parent;
-        Node grandParent = parent.parent;
+    private void fixDoubleRed(RedBlackNode child) {
+        RedBlackNode parent = child.parent;
+        RedBlackNode grandParent = parent.parent;
         if (grandParent == null) {
             parent.color = BLACK;
             return;
         }
-        Node n1, n2, n3, t1, t2, t3, t4;
+        RedBlackNode n1, n2, n3, t1, t2, t3, t4;
         if (parent == grandParent.left) {
             n3 = grandParent;
             t4 = grandParent.right;
@@ -335,9 +335,9 @@ public class RedBlackTree {
      *            the negative red node
      */
     @SuppressWarnings("rawtypes")
-    private void fixNegativeRed(Node negRed) {
-        Node n1, n2, n3, n4, t1, t2, t3, child;
-        Node parent = negRed.parent;
+    private void fixNegativeRed(RedBlackNode negRed) {
+        RedBlackNode n1, n2, n3, n4, t1, t2, t3, child;
+        RedBlackNode parent = negRed.parent;
         if (parent.left == negRed) {
             n1 = negRed.left;
             n2 = negRed;

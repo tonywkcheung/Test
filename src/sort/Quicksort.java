@@ -1,4 +1,4 @@
-package sort.qsort;
+package sort;
 
 public class Quicksort<T extends Comparable<T>> {
 

@@ -1,4 +1,4 @@
-package trees.rbtree;
+package trees;
 
 import static org.junit.Assert.assertEquals;
 
@@ -48,7 +48,7 @@ public class RedBlackTreeTest {
         class MyVisitor implements RedBlackTree.Visitor {
             String result = "";
 
-            public void visit(Node n) {
+            public void visit(RedBlackNode n) {
                 result = result + n.data;
             }
         }
@@ -95,12 +95,12 @@ public class RedBlackTreeTest {
                 RedBlackTree rb = new RedBlackTree();
                 rb.root = copy(t.root);
 
-                Node[] nodes = getNodes(rb);
-                Node toDelete = null;
+                RedBlackNode[] nodes = getNodes(rb);
+                RedBlackNode toDelete = null;
 
                 // Color with the bit pattern of k
                 int bits = k;
-                for (Node n : nodes) {
+                for (RedBlackNode n : nodes) {
                     if (n == rb.root) {
                         n.color = RedBlackTree.BLACK;
                     } else if (n.color == RedBlackTree.BLACK) {
@@ -141,7 +141,7 @@ public class RedBlackTreeTest {
     }
 
     @SuppressWarnings("unused")
-    private static String dump(Node n) {
+    private static String dump(RedBlackNode n) {
         if (n == null)
             return "";
         return "(" + dump(n.left) + n.data + "NRBD".charAt(n.color + 1)
@@ -157,9 +157,9 @@ public class RedBlackTreeTest {
             templates[i] = new RedBlackTree();
         }
 
-        Node[] n = new Node[8];
+        RedBlackNode[] n = new RedBlackNode[8];
         for (int i = 0; i < n.length; i++) {
-            n[i] = new Node();
+            n[i] = new RedBlackNode();
         }
 
         /*
@@ -180,7 +180,7 @@ public class RedBlackTreeTest {
         // Mirror image
 
         for (int i = 0; i < n.length; i++) {
-            n[i] = new Node();
+            n[i] = new RedBlackNode();
         }
         templates[1].root = n[0];
 
@@ -204,12 +204,12 @@ public class RedBlackTreeTest {
      *            a red-black tree
      * @return an array of all nodes in t
      */
-    private static Node[] getNodes(RedBlackTree t) {
-        final Node[] nodes = new Node[count(t.root)];
+    private static RedBlackNode[] getNodes(RedBlackTree t) {
+        final RedBlackNode[] nodes = new RedBlackNode[count(t.root)];
         class MyVisitor implements RedBlackTree.Visitor {
             int current = 0;
 
-            public void visit(Node n) {
+            public void visit(RedBlackNode n) {
                 nodes[current] = n;
                 current++;
             }
@@ -230,7 +230,7 @@ public class RedBlackTreeTest {
      * @param targetCost
      *            the target cost
      */
-    private static void fill(Node n, int targetCost) {
+    private static void fill(RedBlackNode n, int targetCost) {
         int cost = targetCost - costToRoot(n);
         if (n.left == null)
             n.setLeftChild(fullTree(cost));
@@ -245,7 +245,7 @@ public class RedBlackTreeTest {
      *            a node of a red-black tree
      * @return the number of black nodes between n and the root
      */
-    private static int costToRoot(Node n) {
+    private static int costToRoot(RedBlackNode n) {
         int c = 0;
         while (n != null) {
             c = c + n.color;
@@ -261,10 +261,10 @@ public class RedBlackTreeTest {
      *            the desired depth
      * @return the root node of a full black tree
      */
-    private static Node fullTree(int depth) {
+    private static RedBlackNode fullTree(int depth) {
         if (depth <= 0)
             return null;
-        Node r = new Node();
+        RedBlackNode r = new RedBlackNode();
         r.color = RedBlackTree.BLACK;
         r.setLeftChild(fullTree(depth - 1));
         r.setRightChild(fullTree(depth - 1));
@@ -278,11 +278,11 @@ public class RedBlackTreeTest {
      *            the root of a red-black tree
      * @return the root node of a copy of the tree
      */
-    private static Node copy(Node n) {
+    private static RedBlackNode copy(RedBlackNode n) {
         if (n == null) {
             return null;
         }
-        Node newNode = new Node();
+        RedBlackNode newNode = new RedBlackNode();
         newNode.setLeftChild(copy(n.left));
         newNode.setRightChild(copy(n.right));
         newNode.data = n.data;
@@ -297,7 +297,7 @@ public class RedBlackTreeTest {
      *            the root of a red-black tree
      * @return the number of nodes in the tree
      */
-    private static int count(Node n) {
+    private static int count(RedBlackNode n) {
         if (n == null) {
             return 0;
         } else
@@ -315,7 +315,7 @@ public class RedBlackTreeTest {
         class MyVisitor implements RedBlackTree.Visitor {
             int count;
 
-            public void visit(Node n) {
+            public void visit(RedBlackNode n) {
                 count++;
                 n.data = new Integer(count);
             }
@@ -340,7 +340,7 @@ public class RedBlackTreeTest {
             Comparable<?> previous;
 
             @SuppressWarnings("unchecked")
-            public void visit(Node n) {
+            public void visit(RedBlackNode n) {
                 if (previous != null) {
                     if (n.data.compareTo(previous) <= 0)
                         throw new IllegalStateException(n.data
@@ -354,7 +354,7 @@ public class RedBlackTreeTest {
         t.inOrderVisit(v);
     }
 
-    private static int checkRedBlack(Node n, Node root) {
+    private static int checkRedBlack(RedBlackNode n, RedBlackNode root) {
         if (n == null)
             return 0;
         int nleft = checkRedBlack(n.left, root);

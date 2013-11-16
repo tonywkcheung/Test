@@ -1,22 +1,22 @@
-package trees.rbtree;
+package trees;
 
 /**
  * A node of a red-black tree stores a data item and references of the child
  * nodes to the left and to the right. The color is the "cost" of passing the
  * node; 1 for black or 0 for red. Temporarily, it may be set to 2 or -1.
  */
-public class Node {
+public class RedBlackNode {
     @SuppressWarnings("rawtypes")
     public Comparable data;
-    public Node left;
-    public Node right;
-    public Node parent;
+    public RedBlackNode left;
+    public RedBlackNode right;
+    public RedBlackNode parent;
     public int color;
 
     /**
      * Constructs a red node with no data.
      */
-    public Node() {
+    public RedBlackNode() {
     }
 
     /**
@@ -25,7 +25,7 @@ public class Node {
      * @param child
      *            the new left child
      */
-    public void setLeftChild(Node child) {
+    public void setLeftChild(RedBlackNode child) {
         left = child;
         if (child != null) {
             child.parent = this;
@@ -38,7 +38,7 @@ public class Node {
      * @param child
      *            the new right child
      */
-    public void setRightChild(Node child) {
+    public void setRightChild(RedBlackNode child) {
         right = child;
         if (child != null) {
             child.parent = this;
@@ -52,7 +52,7 @@ public class Node {
      * @param replacement
      *            the node that replaces this node
      */
-    public void replaceWith(Node replacement) {
+    public void replaceWith(RedBlackNode replacement) {
         if (parent == null)
             return;
         if (this == parent.left)
@@ -68,7 +68,7 @@ public class Node {
      *            the node to insert
      */
     @SuppressWarnings("unchecked")
-    public void addNode(Node newNode) {
+    public void addNode(RedBlackNode newNode) {
         int comp = newNode.data.compareTo(data);
         if (comp < 0) {
             if (left == null) {

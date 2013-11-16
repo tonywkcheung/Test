@@ -1,4 +1,4 @@
-package trees.btree;
+package trees;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -8,18 +8,18 @@ import java.util.Stack;
 
 public class BinaryTree<T extends Comparable<T>> {
 
-    Node<T> root;
+    BTreeNode<T> root;
     List<T> path;
     int size = 0;
 
     public void insert(T value) {
 
-        Node<T> newNode = new Node<T>(value, null, null);
+        BTreeNode<T> newNode = new BTreeNode<T>(value, null, null);
 
         if (root == null) {
             root = newNode;
         } else {
-            Node<T> currentNode = root;
+            BTreeNode<T> currentNode = root;
 
             while (true) {
                 if (value.compareTo(currentNode.value) < 0) {
@@ -48,7 +48,7 @@ public class BinaryTree<T extends Comparable<T>> {
         if (root == null) {
             return false;
         } else {
-            Node<T> currentNode = root;
+            BTreeNode<T> currentNode = root;
 
             while (currentNode != null) {
                 if (value.compareTo(currentNode.value) == 0) {
@@ -63,7 +63,7 @@ public class BinaryTree<T extends Comparable<T>> {
         return false;
     }
 
-    public Node<T> getRoot() {
+    public BTreeNode<T> getRoot() {
         return root;
     }
 
@@ -80,7 +80,7 @@ public class BinaryTree<T extends Comparable<T>> {
         return sb.toString();
     }
 
-    private void visit(Node<T> node) {
+    private void visit(BTreeNode<T> node) {
         if (path != null) {
             path.add(node.value);
         }
@@ -88,7 +88,7 @@ public class BinaryTree<T extends Comparable<T>> {
         // System.out.print(node.value.toString() + ",");
     }
 
-    public void preOrderTraversal(Node<T> node) {
+    public void preOrderTraversal(BTreeNode<T> node) {
         visit(node);
         if (node.left != null) {
             preOrderTraversal(node.left);
@@ -98,7 +98,7 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void inOrderTraversal(Node<T> node) {
+    public void inOrderTraversal(BTreeNode<T> node) {
 
         if (node.left != null) {
             inOrderTraversal(node.left);
@@ -109,7 +109,7 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void postOrderTraversal(Node<T> node) {
+    public void postOrderTraversal(BTreeNode<T> node) {
         if (node.left != null) {
             postOrderTraversal(node.left);
         }
@@ -119,10 +119,10 @@ public class BinaryTree<T extends Comparable<T>> {
         visit(node);
     }
 
-    public void iterativeInOrderTraversal(Node<T> node) {
-        Stack<Node<T>> stack = new Stack<Node<T>>();
+    public void iterativeInOrderTraversal(BTreeNode<T> node) {
+        Stack<BTreeNode<T>> stack = new Stack<BTreeNode<T>>();
 
-        Node<T> currentNode = node;
+        BTreeNode<T> currentNode = node;
 
         while (currentNode != null || !stack.isEmpty()) {
 
@@ -137,10 +137,10 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void iterativePreOrderTraversal(Node<T> node) {
-        Stack<Node<T>> stack = new Stack<Node<T>>();
+    public void iterativePreOrderTraversal(BTreeNode<T> node) {
+        Stack<BTreeNode<T>> stack = new Stack<BTreeNode<T>>();
 
-        Node<T> currentNode = node;
+        BTreeNode<T> currentNode = node;
 
         while (currentNode != null || !stack.isEmpty()) {
 
@@ -155,15 +155,15 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void iterativePostOrderTraversal(Node<T> node) {
-        Stack<Node<T>> stack1 = new Stack<Node<T>>();
-        Stack<Node<T>> stack2 = new Stack<Node<T>>();
+    public void iterativePostOrderTraversal(BTreeNode<T> node) {
+        Stack<BTreeNode<T>> stack1 = new Stack<BTreeNode<T>>();
+        Stack<BTreeNode<T>> stack2 = new Stack<BTreeNode<T>>();
 
         stack1.push(node);
 
         while (!stack1.isEmpty()) {
 
-            Node<T> currentNode = stack1.pop();
+            BTreeNode<T> currentNode = stack1.pop();
 
             if (currentNode.left != null) {
                 stack1.push(currentNode.left);
@@ -179,14 +179,14 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
-    public void breadthFirstTraversal(Node<T> node) {
-        Queue<Node<T>> queue = new LinkedList<Node<T>>();
+    public void breadthFirstTraversal(BTreeNode<T> node) {
+        Queue<BTreeNode<T>> queue = new LinkedList<BTreeNode<T>>();
 
         queue.add(node);
 
         while (!queue.isEmpty()) {
 
-            Node<T> currentNode = queue.remove();
+            BTreeNode<T> currentNode = queue.remove();
 
             visit(currentNode);
 

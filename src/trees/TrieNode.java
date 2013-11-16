@@ -1,22 +1,22 @@
-package trees.trie;
+package trees;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Node {
+public class TrieNode {
 
     private final Character ch;
     private final String value;
-    private Map<Character, Node> children = new HashMap<Character, Node>();
+    private Map<Character, TrieNode> children = new HashMap<Character, TrieNode>();
     private boolean isWord;
 
-    public Node(char ch, String value) {
+    public TrieNode(char ch, String value) {
         this.ch = ch;
         this.value = value;
     }
 
-    public boolean addChild(Node node) {
+    public boolean addChild(TrieNode node) {
         if (children.containsKey(node.getChar())) {
             return false;
         }
@@ -25,7 +25,7 @@ public class Node {
         return true;
     }
 
-    public Collection<Node> getChildren() {
+    public Collection<TrieNode> getChildren() {
         return children.values();
     }
 
@@ -37,7 +37,7 @@ public class Node {
         return ch;
     }
 
-    public Node getChild(char c) {
+    public TrieNode getChild(char c) {
         return children.get(c);
     }
 
