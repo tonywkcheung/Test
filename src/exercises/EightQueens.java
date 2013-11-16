@@ -20,21 +20,16 @@ public class EightQueens {
         }
         else {
             for (int j=i; j<SIZE*SIZE; j++) {
-                if (canMove(j)) {
-                    
-                    makeMove(j);           
-                    
-                    backtrack(j+1);
-                    
+                if (canMove(j)) {                    
+                    makeMove(j);                               
+                    backtrack(j+1);                   
                     if (isFinished) {
                         return;
-                    }
-                    
+                    }                  
                     undoMove(j);
                 }
             }
-        }
-            
+        }         
     }
 
     private void initBoard() {
