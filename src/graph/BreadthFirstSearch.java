@@ -27,9 +27,7 @@ public class BreadthFirstSearch {
     private void initialize(Vertex source) {
 
         for (Vertex node : this.nodes) {
-            if (!node.equals(source)) {
-                state.put(node, "undiscovered");
-            }
+            state.put(node, "unvisited");
         }
     }
 
@@ -39,6 +37,7 @@ public class BreadthFirstSearch {
 
         Queue<Vertex> queue = new LinkedList<Vertex>();
         queue.add(source);
+        state.put(source, "visiting"); 
 
         while (!queue.isEmpty()) {
 
@@ -47,13 +46,13 @@ public class BreadthFirstSearch {
             List<Vertex> adjacentNodes = getAdjacent(current);
             for (Vertex target : adjacentNodes) {
 
-                if (state.get(target).equals("undiscovered")) {
-                    state.put(target, "discovered");
+                if (state.get(target).equals("unvisited")) {
+                    state.put(target, "visiting");
                     parent.put(target, current);
                     queue.add(target);
                 }
             }
-            state.put(current, "processed");
+            state.put(current, "visited");
         }
     }
 

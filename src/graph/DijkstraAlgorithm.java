@@ -15,7 +15,7 @@ public class DijkstraAlgorithm {
     private final List<Edge> edges;
     private Set<Vertex> visitedNodes;
     private Set<Vertex> unvisitedNodes;
-    private Map<Vertex, Vertex> predecessors;
+    private Map<Vertex, Vertex> parent;
     private Map<Vertex, Integer> distance;
 
     // 1 function Dijkstra(Graph, source):
@@ -57,38 +57,40 @@ public class DijkstraAlgorithm {
         visitedNodes = new HashSet<Vertex>();
         unvisitedNodes = new HashSet<Vertex>();
         distance = new HashMap<Vertex, Integer>();
-        predecessors = new HashMap<Vertex, Vertex>();
+        parent = new HashMap<Vertex, Vertex>();
     }
 
     private void initialize(Vertex source) {
 
         for (Vertex node : this.nodes) {
-            if (!node.equals(source)) {
-                unvisitedNodes.add(node);
-            }
+            unvisitedNodes.add(node);
         }
     }
 
-    public void execute(Vertex source) {
+    public void search(Vertex source) {
 
         initialize(source);
-        distance.put(source, 0);
 
         Vertex current = source;
+        distance.put(source, 0);
+        unvisitedNodes.remove(source);
 
         while (!unvisitedNodes.isEmpty()) {
 
-            int dist = getShortestDistance(current);
-            if (dist == Integer.MAX_VALUE) {
+            int distanceToCurrent = getShortestDistance(current);
+            
+            // Stop if we have unconnected node
+            if (distanceToCurrent == Integer.MAX_VALUE) {
                 break;
             }
 
-            List<Vertex> adjacentNodes = getNeighbours(current);
+            List<Vertex> adjacentNodes = getAdjacent(current);
+            
             for (Vertex target : adjacentNodes) {
-                int alt = dist + getDistance(current, target);
-                if (getShortestDistance(target) > alt) {
-                    distance.put(target, alt);
-                    predecessors.put(target, current);
+                int distanceToTarget = distanceToCurrent + getDistance(current, target);
+                if (getShortestDistance(target) > distanceToTarget) {
+                    distance.put(target, distanceToTarget);
+                    parent.put(target, current);
                 }
             }
 
@@ -101,19 +103,17 @@ public class DijkstraAlgorithm {
 
     private int getDistance(Vertex node, Vertex target) {
         for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
-                    && edge.getDestination().equals(target)) {
+            if (edge.getSource().equals(node) && edge.getDestination().equals(target)) {
                 return edge.getWeight();
             }
         }
         return Integer.MAX_VALUE;
     }
 
-    private List<Vertex> getNeighbours(Vertex node) {
+    private List<Vertex> getAdjacent(Vertex node) {
         List<Vertex> neighbors = new ArrayList<Vertex>();
         for (Edge edge : edges) {
-            if (edge.getSource().equals(node)
-                    && !isVisited(edge.getDestination())) {
+            if (edge.getSource().equals(node) && !isVisited(edge.getDestination())) {
                 neighbors.add(edge.getDestination());
             }
         }
@@ -155,12 +155,12 @@ public class DijkstraAlgorithm {
         LinkedList<Vertex> path = new LinkedList<Vertex>();
         Vertex step = target;
         // Check if a path exists
-        if (predecessors.get(step) == null) {
+        if (parent.get(step) == null) {
             return null;
         }
         path.add(step);
-        while (predecessors.get(step) != null) {
-            step = predecessors.get(step);
+        while (parent.get(step) != null) {
+            step = parent.get(step);
             path.add(step);
         }
         // Put it into the correct order

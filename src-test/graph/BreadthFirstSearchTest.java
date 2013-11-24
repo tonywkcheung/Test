@@ -29,23 +29,23 @@ public class BreadthFirstSearchTest {
         nodes.add(new Vertex("Node_5", "Bob"));
         nodes.add(new Vertex("Node_6", "Carol"));
 
-        addLane("Edge_0", 0, 3, 0);
-        addLane("Edge_1", 0, 1, 0);
-        addLane("Edge_2", 0, 2, 0);
-        addLane("Edge_3", 1, 0, 0);
-        addLane("Edge_4", 1, 2, 0);
-        addLane("Edge_5", 1, 4, 0);
-        addLane("Edge_6", 2, 0, 0);
-        addLane("Edge_7", 2, 1, 0);
-        addLane("Edge_8", 2, 4, 0);
-        addLane("Edge_9", 3, 0, 0);
-        addLane("Edge_10", 3, 4, 0);
-        addLane("Edge_11", 3, 5, 0);
-        addLane("Edge_13", 4, 3, 0);
-        addLane("Edge_14", 4, 5, 0);
-        addLane("Edge_15", 4, 2, 0);
-        addLane("Edge_19", 5, 4, 0);
-        addLane("Edge_20", 5, 3, 0);
+        addEdge("Edge_0", 0, 3, 0);
+        addEdge("Edge_1", 0, 1, 0);
+        addEdge("Edge_2", 0, 2, 0);
+        addEdge("Edge_3", 1, 0, 0);
+        addEdge("Edge_4", 1, 2, 0);
+        addEdge("Edge_5", 1, 4, 0);
+        addEdge("Edge_6", 2, 0, 0);
+        addEdge("Edge_7", 2, 1, 0);
+        addEdge("Edge_8", 2, 4, 0);
+        addEdge("Edge_9", 3, 0, 0);
+        addEdge("Edge_10", 3, 4, 0);
+        addEdge("Edge_11", 3, 5, 0);
+        addEdge("Edge_13", 4, 3, 0);
+        addEdge("Edge_14", 4, 5, 0);
+        addEdge("Edge_15", 4, 2, 0);
+        addEdge("Edge_19", 5, 4, 0);
+        addEdge("Edge_20", 5, 3, 0);
 
         // Lets check from location Loc_1 to Loc_10
         graph = new Graph(nodes, edges);
@@ -103,9 +103,9 @@ public class BreadthFirstSearchTest {
         System.out.print("\n");
     }
 
-    private void addLane(String laneId, int sourceNo, int destNo, int duration) {
-        Edge lane = new Edge(laneId, nodes.get(sourceNo), nodes.get(destNo),
-                duration);
+    private void addEdge(String edgeId, int sourceNo, int destNo, int weight) {
+        Edge lane = new Edge(edgeId, nodes.get(sourceNo), nodes.get(destNo), weight);
         edges.add(lane);
     }
+
 }

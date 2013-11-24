@@ -6,39 +6,56 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class DepthFirstSearch {
 
+    private final List<Vertex> nodes;
     private final List<Edge> edges;
     private Map<Vertex, String> state;
     private Map<Vertex, Vertex> parent;
 
     public DepthFirstSearch(Graph graph) {
 
+        this.nodes = new ArrayList<Vertex>(graph.getVertices());
         this.edges = new ArrayList<Edge>(graph.getEdges());
 
         state = new HashMap<Vertex, String>();
         parent = new HashMap<Vertex, Vertex>();
     }
 
-    public void search(Vertex v) {
+    private void initialize(Vertex source) {
 
-        state.put(v, "discovered");
-
-        List<Vertex> adjacentNodes = getAdjacent(v);
-        for (Vertex adj : adjacentNodes) {
-
-            if (!state.containsKey(adj)
-                    || state.get(adj).equals("undiscovered")) {
-                parent.put(adj, v);
-
-                search(adj);
-            }
+        for (Vertex node : this.nodes) {
+            state.put(node, "unvisited");
         }
-
-        state.put(v, "processed");
-
     }
+    
+    public void search(Vertex source) {
+
+        initialize(source);
+
+        Stack<Vertex> stack = new Stack<Vertex>();
+        stack.push(source);
+        state.put(source, "visiting"); 
+
+        while (!stack.isEmpty()) {
+
+            Vertex current = stack.pop();
+
+            List<Vertex> adjacentNodes = getAdjacent(current);
+            for (Vertex target : adjacentNodes) {
+
+                if (state.get(target).equals("unvisited")) {
+                    state.put(target, "visiting");
+                    parent.put(target, current);
+                    stack.push(target);
+                }
+            }
+            state.put(current, "visited");
+        }
+    }
+
 
     private List<Vertex> getAdjacent(Vertex node) {
         List<Vertex> neighbors = new ArrayList<Vertex>();
