@@ -17,14 +17,14 @@ public class DepthFirstSearch {
 
     public DepthFirstSearch(Graph graph) {
 
-        this.nodes = new ArrayList<Vertex>(graph.getVertices());
-        this.edges = new ArrayList<Edge>(graph.getEdges());
+        this.nodes = new ArrayList<>(graph.getVertices());
+        this.edges = new ArrayList<>(graph.getEdges());
 
-        state = new HashMap<Vertex, String>();
-        parent = new HashMap<Vertex, Vertex>();
+        state = new HashMap<>();
+        parent = new HashMap<>();
     }
 
-    private void initialize(Vertex source) {
+    private void initialize() {
 
         for (Vertex node : this.nodes) {
             state.put(node, "unvisited");
@@ -33,9 +33,9 @@ public class DepthFirstSearch {
     
     public void search(Vertex source) {
 
-        initialize(source);
+        initialize();
 
-        Stack<Vertex> stack = new Stack<Vertex>();
+        Stack<Vertex> stack = new Stack<>();
         stack.push(source);
         state.put(source, "visiting"); 
 
@@ -58,7 +58,7 @@ public class DepthFirstSearch {
 
 
     private List<Vertex> getAdjacent(Vertex node) {
-        List<Vertex> neighbors = new ArrayList<Vertex>();
+        List<Vertex> neighbors = new ArrayList<>();
         for (Edge edge : edges) {
             if (edge.getSource().equals(node)) {
                 neighbors.add(edge.getDestination());
@@ -72,7 +72,7 @@ public class DepthFirstSearch {
      * NULL if no path exists
      */
     public LinkedList<Vertex> getPath(Vertex target) {
-        LinkedList<Vertex> path = new LinkedList<Vertex>();
+        LinkedList<Vertex> path = new LinkedList<>();
         Vertex step = target;
         // Check if a path exists
         if (parent.get(step) == null) {

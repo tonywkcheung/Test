@@ -14,7 +14,7 @@ public class BinaryTree<T extends Comparable<T>> {
 
     public void insert(T value) {
 
-        BinaryTreeNode<T> newNode = new BinaryTreeNode<T>(value, null, null);
+        BinaryTreeNode<T> newNode = new BinaryTreeNode<>(value, null, null);
 
         if (root == null) {
             root = newNode;
@@ -68,11 +68,11 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public void resetPath() {
-        path = new ArrayList<T>();
+        path = new ArrayList<>();
     }
 
     public String getPath() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (T value : path) {
             sb.append(value);
             sb.append(",");
@@ -120,7 +120,7 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public void iterativeInOrderTraversal(BinaryTreeNode<T> node) {
-        Stack<BinaryTreeNode<T>> stack = new Stack<BinaryTreeNode<T>>();
+        Stack<BinaryTreeNode<T>> stack = new Stack<>();
 
         BinaryTreeNode<T> currentNode = node;
 
@@ -138,7 +138,7 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public void iterativePreOrderTraversal(BinaryTreeNode<T> node) {
-        Stack<BinaryTreeNode<T>> stack = new Stack<BinaryTreeNode<T>>();
+        Stack<BinaryTreeNode<T>> stack = new Stack<>();
 
         BinaryTreeNode<T> currentNode = node;
 
@@ -156,8 +156,8 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public void iterativePostOrderTraversal(BinaryTreeNode<T> node) {
-        Stack<BinaryTreeNode<T>> stack1 = new Stack<BinaryTreeNode<T>>();
-        Stack<BinaryTreeNode<T>> stack2 = new Stack<BinaryTreeNode<T>>();
+        Stack<BinaryTreeNode<T>> stack1 = new Stack<>();
+        Stack<BinaryTreeNode<T>> stack2 = new Stack<>();
 
         stack1.push(node);
 
@@ -180,7 +180,7 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     public void breadthFirstTraversal(BinaryTreeNode<T> node) {
-        Queue<BinaryTreeNode<T>> queue = new LinkedList<BinaryTreeNode<T>>();
+        Queue<BinaryTreeNode<T>> queue = new LinkedList<>();
 
         queue.add(node);
 

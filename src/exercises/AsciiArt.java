@@ -25,6 +25,8 @@ public class AsciiArt {
             char ch = (char) scanner.nextInt();
 
             buffer[y][x] = ch;
+            
+            scanner.close();
         }
 
         return toString();

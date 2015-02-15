@@ -27,7 +27,7 @@ public class DijkstraAlgorithm {
     // 7
     // 8 dist[source] := 0 ; // Distance from source to source
     // 9 Q := the set of all nodes in Graph ; // All nodes in the graph are
-    // 10 // unoptimized Ð thus are in Q
+    // 10 // unoptimized ï¿½ thus are in Q
     // 11 while Q is not empty: // The main loop
     // 12 u := vertex in Q with smallest distance in dist[] ; // Source node in
     // first case
@@ -51,16 +51,16 @@ public class DijkstraAlgorithm {
 
     public DijkstraAlgorithm(Graph graph) {
 
-        this.nodes = new ArrayList<Vertex>(graph.getVertices());
-        this.edges = new ArrayList<Edge>(graph.getEdges());
+        this.nodes = new ArrayList<>(graph.getVertices());
+        this.edges = new ArrayList<>(graph.getEdges());
 
-        visitedNodes = new HashSet<Vertex>();
-        unvisitedNodes = new HashSet<Vertex>();
-        distance = new HashMap<Vertex, Integer>();
-        parent = new HashMap<Vertex, Vertex>();
+        visitedNodes = new HashSet<>();
+        unvisitedNodes = new HashSet<>();
+        distance = new HashMap<>();
+        parent = new HashMap<>();
     }
 
-    private void initialize(Vertex source) {
+    private void initialize() {
 
         for (Vertex node : this.nodes) {
             unvisitedNodes.add(node);
@@ -69,7 +69,7 @@ public class DijkstraAlgorithm {
 
     public void search(Vertex source) {
 
-        initialize(source);
+        initialize();
 
         Vertex current = source;
         distance.put(source, 0);
@@ -111,7 +111,7 @@ public class DijkstraAlgorithm {
     }
 
     private List<Vertex> getAdjacent(Vertex node) {
-        List<Vertex> neighbors = new ArrayList<Vertex>();
+        List<Vertex> neighbors = new ArrayList<>();
         for (Edge edge : edges) {
             if (edge.getSource().equals(node) && !isVisited(edge.getDestination())) {
                 neighbors.add(edge.getDestination());
@@ -152,7 +152,7 @@ public class DijkstraAlgorithm {
      * NULL if no path exists
      */
     public LinkedList<Vertex> getPath(Vertex target) {
-        LinkedList<Vertex> path = new LinkedList<Vertex>();
+        LinkedList<Vertex> path = new LinkedList<>();
         Vertex step = target;
         // Check if a path exists
         if (parent.get(step) == null) {
