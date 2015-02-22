@@ -25,7 +25,7 @@ public class Trie {
     }
 
     public void addWord(char[] word) {
-        TrieNode node = null;
+        TrieNode node;
 
         if (!root.containsKey(word[0])) {
             root.put(word[0], new TrieNode(word[0], "" + word[0]));

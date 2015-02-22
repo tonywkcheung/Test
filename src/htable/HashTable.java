@@ -33,7 +33,7 @@ public class HashTable<K, V> {
                 hashEntry = hashEntry.next();
             }
 
-            table[hashIndex] = new Entry<K, V>(key, value, table[hashIndex]);
+            table[hashIndex] = new Entry<>(key, value, table[hashIndex]);
         }
         size++;
     }

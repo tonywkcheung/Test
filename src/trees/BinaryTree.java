@@ -129,7 +129,8 @@ public class BinaryTree<T extends Comparable<T>> {
             if (currentNode != null) {
                 stack.push(currentNode);
                 currentNode = currentNode.left;
-            } else if (!stack.isEmpty()) {
+            }
+            else if (!stack.isEmpty()) {
                 currentNode = stack.pop();
                 visit(currentNode);
                 currentNode = currentNode.right;
@@ -148,7 +149,8 @@ public class BinaryTree<T extends Comparable<T>> {
                 visit(currentNode);
                 stack.push(currentNode);
                 currentNode = currentNode.left;
-            } else if (!stack.isEmpty()) {
+            }
+            else if (!stack.isEmpty()) {
                 currentNode = stack.pop();
                 currentNode = currentNode.right;
             }
