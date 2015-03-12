@@ -11,12 +11,13 @@ public class Permutations {
     }
 
     public List<String> getPermutations(String prefix, String str) {
-        List<String> words = new ArrayList<String>();
+        List<String> words = new ArrayList<>();
 
         int len = str.length();
         if (len == 0) {
             words.add(prefix);
-        } else {
+        }
+        else {
             for (int i = 0; i < len; i++) {
                 words.addAll(getPermutations(prefix + str.charAt(i),
                         str.substring(0, i) + str.substring(i + 1, len)));
