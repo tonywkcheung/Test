@@ -20,19 +20,4 @@ public class OverLappingIntervals {
         }
         return overlappingIntervals;
     }
-
-    public static class Interval {
-        final public int start;
-        final public int end;
-
-        public Interval(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("[%d, %d]", start, end);
-        }
-    }
 }
