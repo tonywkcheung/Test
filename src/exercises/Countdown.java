@@ -44,7 +44,7 @@ public class Countdown {
     }
 
     private List<String> generateSolutions(String prefix, String str) {
-        List<String> words = new ArrayList<String>();
+        List<String> words = new ArrayList<>();
         
         int len = str.length();
         if (len == 0) {
@@ -61,7 +61,7 @@ public class Countdown {
     public boolean checkWord(String word){
         if (dictionary == null) {
             dictionary = new Dictionary();
-            dictionary.load("/Users/tonycheung/Documents/workspace/Test/data/5desk.txt");
+            dictionary.load("/Users/tonycheung/workspace/Test/data/5desk.txt");
         }
         
         return dictionary.checkWord(word);

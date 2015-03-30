@@ -20,7 +20,7 @@ public class AsciiArtTest {
     @Test
     public void printBunny() {
         AsciiArt asciiArt = new AsciiArt();
-        String bunnyText = readTextFromFile("/Users/tonycheung/Documents/workspace/Test/data/bunny.txt");
+        String bunnyText = readTextFromFile("/Users/tonycheung/workspace/Test/data/bunny.txt");
         String bunnyArt = asciiArt.toAsciiArt(bunnyText);
         System.out.println(bunnyArt);
     }
@@ -28,7 +28,7 @@ public class AsciiArtTest {
     @Test
     public void printGhostbusters() {
         AsciiArt asciiArt = new AsciiArt();
-        String gbText = readTextFromFile("/Users/tonycheung/Documents/workspace/Test/data/ghostbusters.txt");
+        String gbText = readTextFromFile("/Users/tonycheung/workspace/Test/data/ghostbusters.txt");
         String gbArt = asciiArt.toAsciiArt(gbText);
         System.out.println(gbArt);
     }

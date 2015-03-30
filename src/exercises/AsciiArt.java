@@ -42,7 +42,7 @@ public class AsciiArt {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < Y; i++) {
             for (int j = 0; j < X; j++) {

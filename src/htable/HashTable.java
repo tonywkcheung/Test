@@ -22,7 +22,7 @@ public class HashTable<K, V> {
         Entry<K, V> hashEntry = table[hashIndex];
 
         if (hashEntry == null) {
-            table[hashIndex] = new Entry<K, V>(key, value, null);
+            table[hashIndex] = new Entry<>(key, value, null);
         } else {
             while (hashEntry != null) {
                 if (hashEntry.getKey().equals(key)) {
@@ -47,9 +47,7 @@ public class HashTable<K, V> {
 
         Entry<K, V> hashEntry = table[hashIndex];
 
-        if (hashEntry == null) {
-            return;
-        } else {
+        if (hashEntry != null) {
             Entry<K, V> previousEntry = null;
 
             while (hashEntry != null) {
@@ -86,7 +84,7 @@ public class HashTable<K, V> {
     }
 
     public Collection<V> valueSet() {
-        List<V> valueList = new ArrayList<V>();
+        List<V> valueList = new ArrayList<>();
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (table[i] != null) {
                 for (Entry<K, V> hashEntry = table[i]; hashEntry != null; hashEntry = hashEntry.next()) {
@@ -99,7 +97,7 @@ public class HashTable<K, V> {
     }
 
     public Collection<K> keySet() {
-        List<K> keyList = new ArrayList<K>();
+        List<K> keyList = new ArrayList<>();
         for (int i = 0; i < ARRAY_SIZE; i++) {
             if (table[i] != null) {
                 for (Entry<K, V> hashEntry = table[i]; hashEntry != null; hashEntry = hashEntry.next()) {
@@ -112,7 +110,7 @@ public class HashTable<K, V> {
     }
 
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < ARRAY_SIZE; i++) {
             Entry<K, V> hashEntry = table[i];

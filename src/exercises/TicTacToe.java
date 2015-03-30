@@ -6,15 +6,13 @@ import java.util.List;
 public class TicTacToe {
 
     char[] board = new char[9];
-    List<GameLine> lines = new ArrayList<GameLine>();
+    List<GameLine> lines = new ArrayList<>();
 
     public TicTacToe(char[] board) {
 
         initGameLines();
 
-        for (int i = 0; i < board.length; i++) {
-            this.board[i] = board[i];
-        }
+        System.arraycopy(board, 0, this.board, 0, board.length);
     }
 
     private void initGameLines() {
@@ -53,11 +51,8 @@ public class TicTacToe {
         }
 
         public boolean won() {
-            if ((board[x] == 'x' || board[x] == 'o') && board[x] == (board[y])
-                    && board[x] == (board[z])) {
-                return true;
-            }
-            return false;
+            return (board[x] == 'x' || board[x] == 'o') && board[x] == (board[y])
+                    && board[x] == (board[z]);
         }
 
         public char winningPlayer() {

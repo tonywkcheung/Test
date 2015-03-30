@@ -8,7 +8,7 @@ public class SplitStringIntoWords {
 
     public static List<String> splitWord(String s, Set<String> dictionary) {
 
-        List<String> words = new ArrayList<String>();
+        List<String> words = new ArrayList<>();
 
         if (s == null) {
             return null;

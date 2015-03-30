@@ -9,7 +9,7 @@ public class T9Spelling {
 
     public T9Spelling() {
 
-        keyMap = new HashMap<String, Key>();
+        keyMap = new HashMap<>();
 
         keyMap.put("a", new Key("a", "2", 2));
         keyMap.put("b", new Key("b", "22", 2));
@@ -46,7 +46,7 @@ public class T9Spelling {
             return null;
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         Key prevKey = null;
 
         for (int i = 0; i < message.length(); i++) {

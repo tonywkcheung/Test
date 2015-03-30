@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Fibonacci {
 
-    public static boolean isFibonacci(long num) {
+    public static boolean isFibonacci(long n) {
 
-        if (num == 0) {
+        if (n == 0) {
             return true;
         }
 
@@ -17,7 +17,7 @@ public class Fibonacci {
 
         do {
             sum = i + j;
-            if (num == sum) {
+            if (n == sum) {
                 isFibonacci = true;
                 break;
             }
@@ -25,7 +25,7 @@ public class Fibonacci {
             i = j;
             j = sum;
 
-        } while (sum < num);
+        } while (sum < n);
 
         if (isFibonacci) {
             return true;

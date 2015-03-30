@@ -15,7 +15,7 @@ public class DictionaryTest {
         
         if (runOnce) {
             dictionary = new Dictionary();
-            dictionary.load("/Users/tonycheung/Documents/workspace/Test/data/5desk.txt");
+            dictionary.load("/Users/tonycheung/workspace/Test/data/5desk.txt");
         }
         runOnce = false;
     }

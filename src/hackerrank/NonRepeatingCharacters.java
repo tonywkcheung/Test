@@ -1,14 +1,9 @@
 package hackerrank;
 
-
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+import java.util.Scanner;
 
 
-public class Solution {
+public class NonRepeatingCharacters {
 
     public static void calculateComponents(int sum, int[] prices) {
         for (int i=0; i<prices.length; i++) {

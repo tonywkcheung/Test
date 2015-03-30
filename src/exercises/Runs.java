@@ -24,7 +24,7 @@ public class Runs {
     }
 
     public Set<String> generatePermutations(String s) {
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
         permutation("", s, set);
         return set;
     }

@@ -25,7 +25,7 @@ public class ReverseStrings {
 
         while (!stack.empty()) {
             String str = stack.pop();
-            sb.append(str + " ");
+            sb.append(str).append(" ");
         }
 
         return sb.toString().trim();

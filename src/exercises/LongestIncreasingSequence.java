@@ -46,7 +46,7 @@ public class LongestIncreasingSequence {
             }
         }
 
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
 
         // loop back and construct sequence
         int index = maxIdx;

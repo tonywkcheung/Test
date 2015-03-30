@@ -9,8 +9,7 @@ public class SumOfPair {
     public Map<Integer, Integer> getPairs(int[] ints, int sum) {
         Map<Integer, Integer> results = new HashMap<>();
         Set<Integer> numbers = new HashSet<>();
-        for (int i=0; i<ints.length; i++) {
-            int value = ints[i];
+        for (int value : ints) {
             if (value <= sum) {
                 if (numbers.contains(sum - value)) {
                     results.put(value, sum - value);

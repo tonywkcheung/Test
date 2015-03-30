@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Dictionary {
     
-    Set<String> dictionary = new HashSet<String>();
+    Set<String> dictionary = new HashSet<>();
     
     public void load(String filename){
         String input = readTextFromFile(filename);

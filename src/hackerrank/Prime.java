@@ -15,7 +15,8 @@ public class Prime {
             return true;
         }
         else {
-            for (int i=2; i<num; i++){
+            int sqrt = (int) Math.sqrt(num);
+            for (int i=2; i<=sqrt; i++){
                 if (num % i == 0) {
                     return false;
                 }
@@ -38,7 +39,7 @@ public class Prime {
         List<Integer> primes = new ArrayList<>();
         primes.add(1);
         for (int i=2; i<=n; i++) {
-            if (array[i] == false) {
+            if (!array[i]) {
                 primes.add(i);
             }
         }

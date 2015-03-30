@@ -9,8 +9,8 @@ import java.util.Map;
 public class Sudoku {
 
     private int[] board = new int[81];
-    private List<GameLine> lines = new ArrayList<GameLine>();
-    private Map<String, GameLine> lineMap = new HashMap<String, GameLine>();
+    private List<GameLine> lines = new ArrayList<>();
+    private Map<String, GameLine> lineMap = new HashMap<>();
 
     public Sudoku() {
 
@@ -123,11 +123,8 @@ public class Sudoku {
         GameLine grid = getLine("grid" + getGrid(i, j));
         grid.updateStatistics();
 
-        if (grid.assigned().contains(val)) {
-            return false;
-        }
+        return !grid.assigned().contains(val);
 
-        return true;
     }
 
     public int getGrid(int i, int j) {
@@ -160,10 +157,10 @@ public class Sudoku {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 9; i++) {
             GameLine line = getLine("row" + i);
-            sb.append(line + "\n");
+            sb.append(line).append("\n");
         }
         return sb.toString();
     }
@@ -182,10 +179,10 @@ public class Sudoku {
         private int int7;
         private int int8;
 
-        private HashMap<Integer, Integer> counts = new HashMap<Integer, Integer>();
-        private List<Integer> unassigned = new ArrayList<Integer>();
-        private List<Integer> assigned = new ArrayList<Integer>();
-        private List<Integer> empty = new ArrayList<Integer>();
+        private HashMap<Integer, Integer> counts = new HashMap<>();
+        private List<Integer> unassigned = new ArrayList<>();
+        private List<Integer> assigned = new ArrayList<>();
+        private List<Integer> empty = new ArrayList<>();
         private int filled = 0;
 
         public GameLine(String id, int[] board, int int0, int int1, int int2,
@@ -317,7 +314,7 @@ public class Sudoku {
 
         @Override
         public String toString() {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < 9; i++) {
                 if (board[getIndex(i)] != 0) {
                     sb.append(board[getIndex(i)]);
