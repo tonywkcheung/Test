@@ -16,6 +16,7 @@ public class SplitStringIntoWordsTest {
     public void splitPeanutButterSuccessfully() {
 
         Set<String> dictionary = new HashSet<String>();
+        dictionary.add("pea");
         dictionary.add("peanut");
         dictionary.add("butter");
         String peanutButter = "peanutbutter";

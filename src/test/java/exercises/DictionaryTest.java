@@ -7,14 +7,14 @@ import org.junit.Test;
 
 public class DictionaryTest {
 
-    private static Dictionary dictionary;
+    private static exercises.Dictionary dictionary;
     private static boolean runOnce = true;
     
     @Before
     public void setUp() {
         
         if (runOnce) {
-            dictionary = new Dictionary();
+            dictionary = new exercises.Dictionary();
             dictionary.load("/Users/tonycheung/workspace/Test/data/5desk.txt");
         }
         runOnce = false;
