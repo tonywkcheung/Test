@@ -20,7 +20,7 @@ public class AsciiArtTest {
     @Test
     public void printBunny() {
         AsciiArt asciiArt = new AsciiArt();
-        String bunnyText = readTextFromFile("/Users/tonycheung/workspace/Test/data/bunny.txt");
+        String bunnyText = readTextFromFile("bunny.txt");
         String bunnyArt = asciiArt.toAsciiArt(bunnyText);
         System.out.println(bunnyArt);
     }
@@ -28,13 +28,13 @@ public class AsciiArtTest {
     @Test
     public void printGhostbusters() {
         AsciiArt asciiArt = new AsciiArt();
-        String gbText = readTextFromFile("/Users/tonycheung/workspace/Test/data/ghostbusters.txt");
+        String gbText = readTextFromFile("ghostbusters.txt");
         String gbArt = asciiArt.toAsciiArt(gbText);
         System.out.println(gbArt);
     }
 
     public String readTextFromFile(String filename) {
-        File file = new File(filename);
+        File file = new File(ClassLoader.getSystemResource(filename).getFile());
         FileInputStream fis;
         byte[] buffer = new byte[(int) file.length()];
 

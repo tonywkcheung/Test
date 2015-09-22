@@ -27,7 +27,7 @@ public class Dictionary {
 
     private String readTextFromFile(String filename) {
         FileInputStream fis;
-        File file = new File(filename);
+        File file = new File(ClassLoader.getSystemResource(filename).getFile());
         byte[] buffer = new byte[(int) file.length()];
         
         try {

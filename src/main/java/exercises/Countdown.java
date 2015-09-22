@@ -61,7 +61,7 @@ public class Countdown {
     public boolean checkWord(String word){
         if (dictionary == null) {
             dictionary = new Dictionary();
-            dictionary.load("/Users/tonycheung/workspace/Test/data/5desk.txt");
+            dictionary.load("5desk.txt");
         }
         
         return dictionary.checkWord(word);
