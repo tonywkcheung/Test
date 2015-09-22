@@ -1,8 +1,6 @@
 bin
 out
+target
 .idea
 *.class
-
-*.iml
-
 *.iml
